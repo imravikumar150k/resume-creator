@@ -10,15 +10,9 @@ import SkillsForm from '../components/form/SkillsForm'
 import ProjectsForm from '../components/form/ProjectsForm'
 import ResumePreview from '../components/preview/ResumePreview'
 import Button from '../components/ui/Button'
+import { SAMPLE_DATA } from '../components/templates/sampleData'
 
-const INITIAL_DATA = {
-  personalInfo: { name: '', email: '', phone: '', location: '', linkedin: '', website: '' },
-  summary: '',
-  experience: [],
-  education: [],
-  skills: [],
-  projects: [],
-}
+const INITIAL_DATA = SAMPLE_DATA
 
 export default function EditorPage() {
   const [resumeData, setResumeData, clearData] = useLocalStorage('resume-data', INITIAL_DATA)
