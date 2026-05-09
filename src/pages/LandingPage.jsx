@@ -9,17 +9,25 @@ export default function LandingPage() {
           Create a professional resume in minutes. No sign-up required. Free forever.
         </p>
         <ul className="text-left text-gray-700 mb-8 space-y-2 max-w-xs mx-auto">
-          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span> Live side-by-side preview</li>
-          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span> Download as PDF instantly</li>
-          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span> Auto-saves your progress</li>
-          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">✓</span> No account needed</li>
+          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">&#10003;</span> 8 professional templates</li>
+          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">&#10003;</span> Live side-by-side preview</li>
+          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">&#10003;</span> Download as PDF instantly</li>
+          <li className="flex items-center gap-2"><span className="text-green-500 font-bold">&#10003;</span> No account needed</li>
         </ul>
-        <Link
-          to="/editor"
-          className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
-        >
-          Create Your Resume
-        </Link>
+        <div className="flex flex-col items-center gap-3">
+          <Link
+            to="/templates"
+            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            Choose a Template
+          </Link>
+          <Link
+            to="/editor"
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+          >
+            or start with Classic template →
+          </Link>
+        </div>
       </div>
     </div>
   )
