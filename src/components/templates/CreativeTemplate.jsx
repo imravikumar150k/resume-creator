@@ -6,7 +6,7 @@ const CreativeTemplate = forwardRef(function CreativeTemplate({ data }, ref) {
   return (
     <div ref={ref} className="resume-preview bg-white max-w-[8.5in] mx-auto font-sans text-sm leading-relaxed flex">
       {/* Left Sidebar */}
-      <aside className="w-[30%] bg-[#1e3a5f] text-white p-6 min-h-[11in]">
+      <aside className="w-[30%] bg-[#1e3a5f] text-white p-6 min-h-[11in] print:min-h-0">
         <div className="mb-6">
           <h1 className="text-xl font-bold leading-tight">{personalInfo.name || 'Your Name'}</h1>
         </div>

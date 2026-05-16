@@ -34,8 +34,7 @@ export default function EditorPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-gray-800">Resume Creator</h1>
+      <header className="bg-white border-b border-gray-200 px-6 py-2 flex items-center justify-end">
         <div className="flex gap-3">
           <Button onClick={() => navigate('/templates')} variant="secondary">Change Template</Button>
           <Button onClick={handleClear} variant="danger">Clear All</Button>

@@ -4,7 +4,7 @@ const AcademicTemplate = forwardRef(function AcademicTemplate({ data }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
-    <div ref={ref} className="resume-preview bg-white p-8 max-w-[8.5in] mx-auto font-sans text-xs leading-snug">
+    <div ref={ref} className="resume-preview bg-white p-8 print:p-0 max-w-[8.5in] mx-auto font-sans text-xs leading-snug">
       <header className="text-center mb-3">
         <h1 className="text-xl font-bold text-gray-900">{personalInfo.name || 'Your Name'}</h1>
         <div className="text-gray-600 text-[10px] mt-1">

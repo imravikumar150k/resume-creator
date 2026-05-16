@@ -4,7 +4,7 @@ const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
-    <div ref={ref} className="resume-preview bg-white p-8 max-w-[8.5in] mx-auto font-sans text-sm leading-loose">
+    <div ref={ref} className="resume-preview bg-white p-8 print:p-0 max-w-[8.5in] mx-auto font-sans text-sm leading-loose">
       <header className="mb-6">
         <h1 className="text-3xl font-normal text-gray-800">{personalInfo.name || 'Your Name'}</h1>
         <div className="text-gray-500 text-xs mt-1 flex flex-wrap gap-x-3">

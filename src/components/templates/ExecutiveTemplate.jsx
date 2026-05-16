@@ -4,7 +4,7 @@ const ExecutiveTemplate = forwardRef(function ExecutiveTemplate({ data }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
-    <div ref={ref} className="resume-preview bg-white p-8 max-w-[8.5in] mx-auto font-sans text-sm leading-relaxed">
+    <div ref={ref} className="resume-preview bg-white p-8 print:p-0 max-w-[8.5in] mx-auto font-sans text-sm leading-relaxed">
       <header className="flex justify-between items-start mb-4 pb-3 border-b-2 border-[#1e3a5f]">
         <h1 className="text-2xl font-bold text-[#1e3a5f]">{personalInfo.name || 'Your Name'}</h1>
         <div className="text-right text-xs text-gray-600 space-y-0.5">
