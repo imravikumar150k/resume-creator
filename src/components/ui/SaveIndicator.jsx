@@ -1,9 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 export default function SaveIndicator({ data }) {
   const [status, setStatus] = useState('saved')
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     setStatus('saving')
     const timer = setTimeout(() => setStatus('saved'), 500)
     return () => clearTimeout(timer)

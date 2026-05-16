@@ -10,10 +10,10 @@ export default function TemplateGallery() {
   const navigate = useNavigate()
   const templates = getAllTemplates()
 
-  function selectTemplate(id) {
+  const selectTemplate = useCallback((id) => {
     setSelectedTemplate(id)
     navigate('/editor')
-  }
+  }, [setSelectedTemplate, navigate])
 
   const goLeft = useCallback(() => {
     setCurrentIndex((prev) => (prev === 0 ? templates.length - 1 : prev - 1))
@@ -35,7 +35,7 @@ export default function TemplateGallery() {
     }
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [goLeft, goRight, currentIndex, templates])
+  }, [goLeft, goRight, selectTemplate, currentIndex, templates])
 
   const template = templates[currentIndex]
   const TemplateComponent = template.component

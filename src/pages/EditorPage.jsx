@@ -44,7 +44,7 @@ export default function EditorPage() {
       </div>
 
       <header className="bg-white border-b border-gray-200 px-4 md:px-6 py-2 flex items-center justify-between">
-        <SaveIndicator />
+        <SaveIndicator data={resumeData} />
         <div className="flex gap-2 md:gap-3">
           <Button onClick={() => navigate('/templates')} variant="secondary">Change Template</Button>
           <Button onClick={handleClear} variant="danger">Clear All</Button>
