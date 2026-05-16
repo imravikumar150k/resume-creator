@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function NotFound() {
+  useEffect(() => { document.title = 'Page Not Found | ResumeMaker' }, [])
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900">
       <h1 className="text-8xl font-bold text-white mb-4">404</h1>

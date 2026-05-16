@@ -5,21 +5,64 @@
     <link rel="icon" type="image/svg+xml" href="/resume-creator/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ResumeMaker - Free Resume Builder | 20+ Templates</title>
-    <meta name="description" content="Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up required." />
-    <meta name="keywords" content="resume builder, CV maker, free resume templates, PDF resume, professional resume" />
+    <meta name="description" content="Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up required. Completely free." />
+    <meta name="keywords" content="resume builder, CV maker, free resume templates, PDF resume, professional resume, online resume creator, resume generator" />
+    <link rel="canonical" href="https://neerajrathore.github.io/resume-creator/" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="ResumeMaker - Free Resume Builder" />
-    <meta property="og:description" content="Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up." />
+    <meta property="og:title" content="ResumeMaker - Free Resume Builder | 20+ Templates" />
+    <meta property="og:description" content="Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up required." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://neerajrathore.github.io/resume-creator/" />
+    <meta property="og:site_name" content="ResumeMaker" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ResumeMaker - Free Resume Builder" />
-    <meta name="twitter:description" content="Create a professional resume in minutes with 20+ free templates." />
+    <meta name="twitter:title" content="ResumeMaker - Free Resume Builder | 20+ Templates" />
+    <meta name="twitter:description" content="Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up." />
 
     <!-- Theme color -->
     <meta name="theme-color" content="#4f46e5" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ResumeMaker",
+      "url": "https://neerajrathore.github.io/resume-creator/",
+      "description": "Create a professional resume in minutes with 20+ free templates. Live preview, PDF export, no sign-up required.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "20+ professional resume templates",
+        "Live side-by-side preview",
+        "PDF export",
+        "Custom accent color picker",
+        "Auto-save to browser",
+        "No account required"
+      ]
+    }
+    </script>
+
+    <!-- GitHub Pages SPA redirect receiver -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
   <body>
     <div id="root"></div>

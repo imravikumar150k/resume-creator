@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/ui/Navbar'
 import Footer from './components/ui/Footer'
 import ErrorBoundary from './components/ui/ErrorBoundary'
@@ -19,7 +19,7 @@ function LoadingFallback() {
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/resume-creator">
       <div className="h-screen flex flex-col overflow-hidden">
         <Navbar />
         <ErrorBoundary>
@@ -34,7 +34,7 @@ function App() {
         </ErrorBoundary>
         <Footer />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 

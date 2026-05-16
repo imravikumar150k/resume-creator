@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
+import { usePageTitle } from '../hooks/usePageTitle'
 
 export default function LandingPage() {
+  usePageTitle(null)
+
   return (
     <main className="flex-1 flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 px-4">
       <div className="text-center max-w-lg px-6">

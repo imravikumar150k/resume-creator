@@ -1,10 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { getAllTemplates } from '../components/templates'
 import { SAMPLE_DATA } from '../components/templates/sampleData'
 
 export default function TemplateGallery() {
+  usePageTitle('Browse 20+ Resume Templates')
   const [selectedTemplate, setSelectedTemplate] = useLocalStorage('resume-template', 'classic')
   const [currentIndex, setCurrentIndex] = useState(0)
   const navigate = useNavigate()

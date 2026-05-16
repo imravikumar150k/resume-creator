@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useReactToPrint } from 'react-to-print'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { usePageTitle } from '../hooks/usePageTitle'
 import PersonalInfoForm from '../components/form/PersonalInfoForm'
 import SummaryForm from '../components/form/SummaryForm'
 import ExperienceForm from '../components/form/ExperienceForm'
@@ -18,6 +19,7 @@ import { getTemplate } from '../components/templates'
 const INITIAL_DATA = SAMPLE_DATA
 
 export default function EditorPage() {
+  usePageTitle('Build Your Resume')
   const [resumeData, setResumeData, clearData] = useLocalStorage('resume-data', INITIAL_DATA)
   const [templateId] = useLocalStorage('resume-template', 'classic')
   const defaultColor = getTemplate(templateId).accentColor
