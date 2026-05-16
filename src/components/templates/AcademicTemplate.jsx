@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const AcademicTemplate = forwardRef(function AcademicTemplate({ data }, ref) {
+const AcademicTemplate = forwardRef(function AcademicTemplate({ data, accentColor = '#1f2937' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
@@ -16,14 +16,14 @@ const AcademicTemplate = forwardRef(function AcademicTemplate({ data }, ref) {
 
       {summary && (
         <section className="mb-3">
-          <h2 className="text-xs font-bold uppercase text-gray-800 border-b border-gray-400 pb-0.5 mb-1">Research Interests</h2>
+          <h2 className="text-xs font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Research Interests</h2>
           <p className="text-gray-700">{summary}</p>
         </section>
       )}
 
       {education.length > 0 && education.some((e) => e.degree || e.institution) && (
         <section className="mb-3">
-          <h2 className="text-xs font-bold uppercase text-gray-800 border-b border-gray-400 pb-0.5 mb-1">Education</h2>
+          <h2 className="text-xs font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Education</h2>
           {education.map((entry) => (
             (entry.degree || entry.institution) && (
               <div key={entry.id} className="mb-2">
@@ -42,7 +42,7 @@ const AcademicTemplate = forwardRef(function AcademicTemplate({ data }, ref) {
 
       {experience.length > 0 && experience.some((e) => e.title || e.company) && (
         <section className="mb-3">
-          <h2 className="text-xs font-bold uppercase text-gray-800 border-b border-gray-400 pb-0.5 mb-1">Experience</h2>
+          <h2 className="text-xs font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Experience</h2>
           {experience.map((entry) => (
             (entry.title || entry.company) && (
               <div key={entry.id} className="mb-3">
@@ -71,20 +71,20 @@ const AcademicTemplate = forwardRef(function AcademicTemplate({ data }, ref) {
 
       {skills.length > 0 && (
         <section className="mb-3">
-          <h2 className="text-xs font-bold uppercase text-gray-800 border-b border-gray-400 pb-0.5 mb-1">Skills</h2>
+          <h2 className="text-xs font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Skills</h2>
           <p className="text-gray-700">{skills.join(', ')}</p>
         </section>
       )}
 
       {projects.length > 0 && projects.some((p) => p.name) && (
         <section className="mb-3">
-          <h2 className="text-xs font-bold uppercase text-gray-800 border-b border-gray-400 pb-0.5 mb-1">Publications & Projects</h2>
+          <h2 className="text-xs font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Publications & Projects</h2>
           {projects.map((entry) => (
             entry.name && (
               <div key={entry.id} className="mb-1.5">
                 <div className="font-semibold text-gray-900">
                   {entry.name}
-                  {entry.link && <span className="text-[10px] text-blue-600 ml-2">{entry.link}</span>}
+                  {entry.link && <span className="text-[10px] ml-2" style={{ color: accentColor }}>{entry.link}</span>}
                 </div>
                 {entry.description && <p className="text-gray-700">{entry.description}</p>}
               </div>

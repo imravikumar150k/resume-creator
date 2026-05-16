@@ -1,12 +1,12 @@
 import { forwardRef } from 'react'
 
-const CreativeTemplate = forwardRef(function CreativeTemplate({ data }, ref) {
+const CreativeTemplate = forwardRef(function CreativeTemplate({ data, accentColor = '#1e3a5f' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
     <div ref={ref} className="resume-preview bg-white max-w-[8.5in] mx-auto font-sans text-sm leading-relaxed flex">
       {/* Left Sidebar */}
-      <aside className="w-[30%] bg-[#1e3a5f] text-white p-6 min-h-[11in] print:min-h-0">
+      <aside className="w-[30%] text-white p-6 min-h-[11in] print:min-h-0" style={{ backgroundColor: accentColor }}>
         <div className="mb-6">
           <h1 className="text-xl font-bold leading-tight">{personalInfo.name || 'Your Name'}</h1>
         </div>
@@ -56,14 +56,14 @@ const CreativeTemplate = forwardRef(function CreativeTemplate({ data }, ref) {
       <main className="w-[70%] p-6">
         {summary && (
           <section className="mb-5">
-            <h2 className="text-sm font-bold uppercase text-[#1e3a5f] border-b border-gray-200 pb-1 mb-2">Summary</h2>
+            <h2 className="text-sm font-bold uppercase border-b border-gray-200 pb-1 mb-2" style={{ color: accentColor }}>Summary</h2>
             <p className="text-gray-700">{summary}</p>
           </section>
         )}
 
         {experience.length > 0 && experience.some((e) => e.title || e.company) && (
           <section className="mb-5">
-            <h2 className="text-sm font-bold uppercase text-[#1e3a5f] border-b border-gray-200 pb-1 mb-2">Experience</h2>
+            <h2 className="text-sm font-bold uppercase border-b border-gray-200 pb-1 mb-2" style={{ color: accentColor }}>Experience</h2>
             {experience.map((entry) => (
               (entry.title || entry.company) && (
                 <div key={entry.id} className="mb-4">
@@ -89,13 +89,13 @@ const CreativeTemplate = forwardRef(function CreativeTemplate({ data }, ref) {
 
         {projects.length > 0 && projects.some((p) => p.name) && (
           <section className="mb-5">
-            <h2 className="text-sm font-bold uppercase text-[#1e3a5f] border-b border-gray-200 pb-1 mb-2">Projects</h2>
+            <h2 className="text-sm font-bold uppercase border-b border-gray-200 pb-1 mb-2" style={{ color: accentColor }}>Projects</h2>
             {projects.map((entry) => (
               entry.name && (
                 <div key={entry.id} className="mb-2">
                   <div className="font-semibold text-gray-900">
                     {entry.name}
-                    {entry.link && <span className="text-xs text-blue-600 ml-2">{entry.link}</span>}
+                    {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
                   </div>
                   {entry.description && <p className="text-gray-700">{entry.description}</p>}
                 </div>

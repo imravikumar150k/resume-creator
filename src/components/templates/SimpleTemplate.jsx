@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const SimpleTemplate = forwardRef(function SimpleTemplate({ data }, ref) {
+const SimpleTemplate = forwardRef(function SimpleTemplate({ data, accentColor = '#6b7280' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
@@ -10,6 +10,7 @@ const SimpleTemplate = forwardRef(function SimpleTemplate({ data }, ref) {
         <div className="text-gray-500 text-xs mt-0.5">
           {[personalInfo.email, personalInfo.phone, personalInfo.location, personalInfo.linkedin, personalInfo.website].filter(Boolean).join(' | ')}
         </div>
+        <div className="mt-2 h-px" style={{ backgroundColor: accentColor }}></div>
       </header>
 
       {summary && (

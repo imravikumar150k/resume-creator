@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const TechTemplate = forwardRef(function TechTemplate({ data }, ref) {
+const TechTemplate = forwardRef(function TechTemplate({ data, accentColor = '#6b7280' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
@@ -29,7 +29,7 @@ const TechTemplate = forwardRef(function TechTemplate({ data }, ref) {
             <h2 className="font-mono text-sm font-bold text-gray-700 mb-2">Skills</h2>
             <div className="flex flex-wrap gap-1.5">
               {skills.map((skill, i) => (
-                <span key={i} className="bg-gray-100 border border-gray-200 rounded px-2 py-0.5 text-xs text-gray-700">{skill}</span>
+                <span key={i} className="bg-gray-100 rounded px-2 py-0.5 text-xs text-gray-700" style={{ border: `1px solid ${accentColor}` }}>{skill}</span>
               ))}
             </div>
           </section>
@@ -91,7 +91,7 @@ const TechTemplate = forwardRef(function TechTemplate({ data }, ref) {
                 <div key={entry.id} className="mb-2">
                   <div className="font-semibold text-gray-900">
                     {entry.name}
-                    {entry.link && <span className="text-xs text-blue-600 ml-2 font-mono">{entry.link}</span>}
+                    {entry.link && <span className="text-xs ml-2 font-mono" style={{ color: accentColor }}>{entry.link}</span>}
                   </div>
                   {entry.description && <p className="text-gray-700">{entry.description}</p>}
                 </div>

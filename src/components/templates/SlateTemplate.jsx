@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const SlateTemplate = forwardRef(function SlateTemplate({ data }, ref) {
+const SlateTemplate = forwardRef(function SlateTemplate({ data, accentColor = '#0ea5e9' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
@@ -18,14 +18,14 @@ const SlateTemplate = forwardRef(function SlateTemplate({ data }, ref) {
 
       {summary && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-sky-400 mb-1">Summary</h2>
+          <h2 className="text-sm font-bold uppercase mb-1" style={{ color: accentColor }}>Summary</h2>
           <p className="text-slate-300">{summary}</p>
         </section>
       )}
 
       {experience.length > 0 && experience.some((e) => e.title || e.company) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-sky-400 mb-2">Experience</h2>
+          <h2 className="text-sm font-bold uppercase mb-2" style={{ color: accentColor }}>Experience</h2>
           {experience.map((entry) => (
             (entry.title || entry.company) && (
               <div key={entry.id} className="mb-3">
@@ -49,7 +49,7 @@ const SlateTemplate = forwardRef(function SlateTemplate({ data }, ref) {
 
       {education.length > 0 && education.some((e) => e.degree || e.institution) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-sky-400 mb-2">Education</h2>
+          <h2 className="text-sm font-bold uppercase mb-2" style={{ color: accentColor }}>Education</h2>
           {education.map((entry) => (
             (entry.degree || entry.institution) && (
               <div key={entry.id} className="mb-2">
@@ -66,10 +66,10 @@ const SlateTemplate = forwardRef(function SlateTemplate({ data }, ref) {
 
       {skills.length > 0 && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-sky-400 mb-2">Skills</h2>
+          <h2 className="text-sm font-bold uppercase mb-2" style={{ color: accentColor }}>Skills</h2>
           <div className="flex flex-wrap gap-1.5">
             {skills.map((skill, i) => (
-              <span key={i} className="bg-slate-700 text-sky-300 text-xs px-2 py-0.5 rounded">{skill}</span>
+              <span key={i} className="bg-slate-700 text-xs px-2 py-0.5 rounded" style={{ color: accentColor }}>{skill}</span>
             ))}
           </div>
         </section>
@@ -77,12 +77,12 @@ const SlateTemplate = forwardRef(function SlateTemplate({ data }, ref) {
 
       {projects.length > 0 && projects.some((p) => p.name) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-sky-400 mb-2">Projects</h2>
+          <h2 className="text-sm font-bold uppercase mb-2" style={{ color: accentColor }}>Projects</h2>
           {projects.map((entry) => (
             entry.name && (
               <div key={entry.id} className="mb-2">
                 <div className="font-semibold text-white">{entry.name}
-                  {entry.link && <span className="text-xs text-sky-400 ml-2">{entry.link}</span>}
+                  {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
                 </div>
                 {entry.description && <p className="text-slate-300 text-xs">{entry.description}</p>}
               </div>

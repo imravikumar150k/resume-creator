@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 
-const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
+const MinimalTemplate = forwardRef(function MinimalTemplate({ data, accentColor = '#9ca3af' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
@@ -14,6 +14,7 @@ const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
           {personalInfo.linkedin && <span>{personalInfo.linkedin}</span>}
           {personalInfo.website && <span>{personalInfo.website}</span>}
         </div>
+        <div className="mt-3 h-px" style={{ backgroundColor: accentColor }}></div>
       </header>
 
       {summary && (
@@ -86,7 +87,7 @@ const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
               <div key={entry.id} className="mb-2">
                 <div className="font-medium text-gray-800">
                   {entry.name}
-                  {entry.link && <span className="text-xs text-gray-400 ml-2">{entry.link}</span>}
+                  {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
                 </div>
                 {entry.description && <p className="text-gray-600">{entry.description}</p>}
               </div>
