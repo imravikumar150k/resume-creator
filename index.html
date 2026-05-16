@@ -50,6 +50,83 @@
     }
     </script>
 
+    <!-- FAQ Structured Data for rich snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is ResumeMaker really free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, ResumeMaker is completely free. There are no hidden charges, premium tiers, or sign-up requirements. All 20+ templates and features are available at no cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to create an account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No account is needed. Your resume data is saved locally in your browser. You can start building immediately and download as PDF anytime."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many resume templates are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ResumeMaker offers 20+ professional templates including Classic, Modern, Executive, Creative, Tech, Academic, Minimal, Elegant, Timeline, and more. Each template supports custom accent colors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I download my resume as PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can download your resume as a PDF instantly with one click. The PDF preserves the exact formatting and styling of your chosen template."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the resume templates ATS-friendly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all templates use clean, structured layouts with proper headings and sections that are easily parsed by Applicant Tracking Systems (ATS)."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- HowTo Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Create a Professional Resume",
+      "description": "Build a professional resume in 3 simple steps using ResumeMaker's free online tool.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Choose a template",
+          "text": "Browse 20+ professional templates and select one that matches your industry and style preference."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Fill in your details",
+          "text": "Enter your personal info, work experience, education, skills, and projects using the side-by-side editor with live preview."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Download as PDF",
+          "text": "Click Download PDF to instantly save your professionally formatted resume, ready to send to employers."
+        }
+      ]
+    }
+    </script>
+
     <!-- GitHub Pages SPA redirect receiver -->
     <script>
       (function(l) {
@@ -65,7 +142,34 @@
     </script>
   </head>
   <body>
+    <!-- Crawlable content for search engines (hidden when JS loads) -->
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>ResumeMaker - Free Online Resume Builder</h1>
+        <p>Create a professional resume in minutes with 20+ free templates. Live side-by-side preview, instant PDF export, custom accent colors. No sign-up required. Completely free.</p>
+        <h2>Why Use ResumeMaker?</h2>
+        <ul>
+          <li>20+ professional resume templates for every industry</li>
+          <li>Live side-by-side preview as you type</li>
+          <li>Download as PDF instantly with one click</li>
+          <li>Custom accent color picker to match your personal brand</li>
+          <li>Auto-saves to your browser - never lose your work</li>
+          <li>No account or sign-up needed</li>
+          <li>Works on desktop and mobile devices</li>
+          <li>ATS-friendly templates that pass applicant tracking systems</li>
+        </ul>
+        <h2>Available Resume Templates</h2>
+        <p>Classic, Modern, Bold, Executive, Creative, Tech, Academic, Minimal, Elegant, Compact, Timeline, Corporate, Fresh, Slate, Professional, Simple, Gradient, Newspaper, Geometric, Royal</p>
+        <h2>How It Works</h2>
+        <ol>
+          <li>Choose a template from our gallery of 20+ designs</li>
+          <li>Fill in your personal info, experience, education, skills, and projects</li>
+          <li>Customize the accent color to match your style</li>
+          <li>Download as PDF - ready to send to employers</li>
+        </ol>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
