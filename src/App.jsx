@@ -8,6 +8,8 @@ import NotFound from './components/ui/NotFound'
 const LandingPage = lazy(() => import('./pages/LandingPage'))
 const EditorPage = lazy(() => import('./pages/EditorPage'))
 const TemplateGallery = lazy(() => import('./pages/TemplateGallery'))
+const BiodataTemplateGallery = lazy(() => import('./pages/BiodataTemplateGallery'))
+const BiodataEditorPage = lazy(() => import('./pages/BiodataEditorPage'))
 
 function LoadingFallback() {
   return (
@@ -28,6 +30,8 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/templates" element={<TemplateGallery />} />
               <Route path="/editor" element={<EditorPage />} />
+              <Route path="/biodata/templates" element={<BiodataTemplateGallery />} />
+              <Route path="/biodata/editor" element={<BiodataEditorPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

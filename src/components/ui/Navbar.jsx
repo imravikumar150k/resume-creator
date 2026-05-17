@@ -40,6 +40,12 @@ export default function Navbar() {
             Templates
           </Link>
           <Link
+            to="/biodata/templates"
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/biodata/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+          >
+            Biodata
+          </Link>
+          <Link
             to="/editor"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/editor') ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
@@ -82,6 +88,13 @@ export default function Navbar() {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
             Templates
+          </Link>
+          <Link
+            to="/biodata/templates"
+            onClick={closeMenu}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/biodata/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
+          >
+            Biodata
           </Link>
           <Link
             to="/editor"

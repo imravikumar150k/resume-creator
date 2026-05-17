@@ -6,30 +6,44 @@ export default function LandingPage() {
 
   return (
     <main className="flex-1 flex items-center justify-center bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900 px-4">
-      <div className="text-center max-w-lg px-6">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Resume Creator</h1>
+      <div className="text-center max-w-2xl px-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Resume & Biodata Creator</h1>
         <p className="text-lg md:text-xl text-indigo-200 mb-8">
-          Create a professional resume in minutes. No sign-up required. Free forever.
+          Create professional resumes and matrimonial biodata in minutes. No sign-up required. Free forever.
         </p>
-        <ul aria-label="Features" className="text-left text-indigo-100 mb-8 space-y-2 max-w-xs mx-auto">
-          <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> 20 professional templates</li>
-          <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> Live side-by-side preview</li>
-          <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> Download as PDF instantly</li>
-          <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> No account needed</li>
-        </ul>
-        <div className="flex flex-col items-center gap-3">
-          <Link
-            to="/templates"
-            className="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-slate-900"
-          >
-            Choose a Template
-          </Link>
-          <Link
-            to="/editor"
-            className="text-indigo-300 hover:text-white text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded px-2 py-1"
-          >
-            or start with Classic template &rarr;
-          </Link>
+
+        <div className="grid md:grid-cols-2 gap-6 max-w-xl mx-auto">
+          {/* Resume Section */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-2">Resume Builder</h2>
+            <ul aria-label="Resume features" className="text-left text-indigo-100 mb-4 space-y-1 text-sm">
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> 20 professional templates</li>
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> Live side-by-side preview</li>
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-emerald-400 font-bold">&#10003;</span> Download as PDF instantly</li>
+            </ul>
+            <Link
+              to="/templates"
+              className="inline-block w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
+              Build Resume
+            </Link>
+          </div>
+
+          {/* Biodata Section */}
+          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6">
+            <h2 className="text-xl font-bold text-white mb-2">Biodata Maker</h2>
+            <ul aria-label="Biodata features" className="text-left text-indigo-100 mb-4 space-y-1 text-sm">
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-rose-400 font-bold">&#10003;</span> 8 matrimonial templates</li>
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-rose-400 font-bold">&#10003;</span> Personal &amp; family details</li>
+              <li className="flex items-center gap-2"><span aria-hidden="true" className="text-rose-400 font-bold">&#10003;</span> PDF export with one click</li>
+            </ul>
+            <Link
+              to="/biodata/templates"
+              className="inline-block w-full bg-rose-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-rose-700 transition-colors shadow-lg focus:outline-none focus:ring-2 focus:ring-rose-400"
+            >
+              Create Biodata
+            </Link>
+          </div>
         </div>
       </div>
     </main>
