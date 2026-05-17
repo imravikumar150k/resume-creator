@@ -13,14 +13,20 @@ import ResumePreview from '../components/preview/ResumePreview'
 import Button from '../components/ui/Button'
 import SaveIndicator from '../components/ui/SaveIndicator'
 import ColorPicker from '../components/ui/ColorPicker'
-import { SAMPLE_DATA } from '../components/templates/sampleData'
 import { getTemplate } from '../components/templates'
 
-const INITIAL_DATA = SAMPLE_DATA
+const EMPTY_DATA = {
+  personalInfo: { name: '', email: '', phone: '', location: '', linkedin: '', website: '' },
+  summary: '',
+  experience: [{ id: '1', title: '', company: '', startDate: '', endDate: '', current: false, bullets: [''] }],
+  education: [{ id: '1', degree: '', institution: '', startDate: '', endDate: '', gpa: '' }],
+  skills: [],
+  projects: [{ id: '1', name: '', description: '', link: '' }],
+}
 
 export default function EditorPage() {
   usePageTitle('Build Your Resume')
-  const [resumeData, setResumeData, clearData] = useLocalStorage('resume-data', INITIAL_DATA)
+  const [resumeData, setResumeData, clearData] = useLocalStorage('resume-data', EMPTY_DATA)
   const [templateId] = useLocalStorage('resume-template', 'classic')
   const defaultColor = getTemplate(templateId).accentColor
   const [accentColor, setAccentColor] = useLocalStorage('resume-accent-color', defaultColor)
@@ -40,7 +46,7 @@ export default function EditorPage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col min-h-0">
       <div className="md:hidden bg-yellow-50 border-b border-yellow-200 px-4 py-2 text-sm text-yellow-800">
         For the best editing experience, please use a desktop or tablet device.
       </div>

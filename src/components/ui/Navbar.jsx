@@ -37,19 +37,13 @@ export default function Navbar() {
             to="/templates"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
-            Templates
+            Resume
           </Link>
           <Link
             to="/biodata/templates"
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/biodata/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
             Biodata
-          </Link>
-          <Link
-            to="/editor"
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/editor') ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
-          >
-            Start Building
           </Link>
         </div>
 
@@ -87,7 +81,7 @@ export default function Navbar() {
             onClick={closeMenu}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
-            Templates
+            Resume
           </Link>
           <Link
             to="/biodata/templates"
@@ -95,13 +89,6 @@ export default function Navbar() {
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/biodata/templates') ? 'bg-white/10 text-white shadow-inner' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
           >
             Biodata
-          </Link>
-          <Link
-            to="/editor"
-            onClick={closeMenu}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400 ${isActive('/editor') ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md' : 'text-slate-300 hover:text-white hover:bg-white/5'}`}
-          >
-            Start Building
           </Link>
         </div>
       )}

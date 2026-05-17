@@ -13,11 +13,7 @@ export default function ReligiousForm({ data, onChange }) {
         <Input label="Caste" value={data.caste} onChange={(e) => update('caste', e.target.value)} />
       </div>
       <div className="grid grid-cols-2 gap-3">
-        <Input label="Sub-Caste" value={data.subCaste} onChange={(e) => update('subCaste', e.target.value)} />
         <Input label="Gotra" value={data.gotra} onChange={(e) => update('gotra', e.target.value)} />
-      </div>
-      <div className="grid grid-cols-2 gap-3">
-        <Input label="Nakshatra" value={data.nakshatra} onChange={(e) => update('nakshatra', e.target.value)} />
         <Input label="Rashi" value={data.rashi} onChange={(e) => update('rashi', e.target.value)} />
       </div>
     </section>

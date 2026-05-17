@@ -3,19 +3,15 @@ export const BIODATA_SAMPLE_DATA = {
     name: 'Priya Sharma',
     photo: '',
     dob: '15 March 1997',
-    birthTime: '10:30 AM',
     birthPlace: 'Jaipur, Rajasthan',
     height: "5'4\"",
-    weight: '55 kg',
     complexion: 'Fair',
     bloodGroup: 'B+',
   },
   religious: {
     religion: 'Hindu',
     caste: 'Brahmin',
-    subCaste: 'Gaur',
     gotra: 'Bharadwaj',
-    nakshatra: 'Rohini',
     rashi: 'Vrishabha (Taurus)',
   },
   education: {
@@ -32,8 +28,6 @@ export const BIODATA_SAMPLE_DATA = {
     motherOccupation: 'Homemaker',
     brothers: '1 Elder (Married)',
     sisters: '1 Younger (Unmarried)',
-    familyType: 'Nuclear',
-    familyStatus: 'Upper Middle Class',
   },
   contact: {
     address: '42, Vaishali Nagar',
@@ -43,12 +37,4 @@ export const BIODATA_SAMPLE_DATA = {
     email: 'sharma.family@email.com',
   },
   hobbies: 'Classical dance (Kathak), Reading, Cooking, Yoga, Traveling',
-  partnerPreferences: {
-    ageRange: '28-33 years',
-    heightRange: "5'8\" - 6'2\"",
-    education: 'Graduate / Post-Graduate',
-    occupation: 'Well settled professional',
-    caste: 'Brahmin preferred',
-    location: 'Metro cities preferred',
-  },
 }

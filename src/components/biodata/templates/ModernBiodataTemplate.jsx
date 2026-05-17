@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 const ModernBiodataTemplate = forwardRef(function ModernBiodataTemplate({ data, accentColor = '#4f46e5' }, ref) {
-  const { personalInfo, religious, education, family, contact, hobbies, partnerPreferences } = data
+  const { personalInfo, religious, education, family, contact, hobbies } = data
 
   function Section({ title, children }) {
     return (
@@ -36,20 +36,16 @@ const ModernBiodataTemplate = forwardRef(function ModernBiodataTemplate({ data, 
         <Section title="Personal Details">
           <div className="grid grid-cols-2 gap-x-8">
             <Row label="Height" value={personalInfo.height} />
-            <Row label="Weight" value={personalInfo.weight} />
             <Row label="Complexion" value={personalInfo.complexion} />
             <Row label="Blood Group" value={personalInfo.bloodGroup} />
-            <Row label="Birth Time" value={personalInfo.birthTime} />
           </div>
         </Section>
 
         {(religious.religion || religious.caste) && (
           <Section title="Religious Details">
             <div className="grid grid-cols-2 gap-x-8">
-              <Row label="Religion" value={religious.religion} />
-              <Row label="Caste" value={religious.caste} />
+              <Row label="Caste / Religion" value={[religious.caste, religious.religion].filter(Boolean).join(', ')} />
               <Row label="Gotra" value={religious.gotra} />
-              <Row label="Nakshatra" value={religious.nakshatra} />
               <Row label="Rashi" value={religious.rashi} />
             </div>
           </Section>
@@ -74,31 +70,22 @@ const ModernBiodataTemplate = forwardRef(function ModernBiodataTemplate({ data, 
               <Row label="Mother" value={family.motherName && `${family.motherName}${family.motherOccupation ? ` (${family.motherOccupation})` : ''}`} />
               <Row label="Brothers" value={family.brothers} />
               <Row label="Sisters" value={family.sisters} />
-              <Row label="Family Type" value={family.familyType} />
-              <Row label="Family Status" value={family.familyStatus} />
             </div>
           </Section>
         )}
 
         {hobbies && <Section title="Hobbies & Interests"><p className="text-sm">{hobbies}</p></Section>}
 
-        {(partnerPreferences.ageRange || partnerPreferences.education) && (
-          <Section title="Partner Preferences">
+
+        {(contact.address || contact.city || contact.phone || contact.email) && (
+          <Section title="Contact Details">
             <div className="grid grid-cols-2 gap-x-8">
-              <Row label="Age" value={partnerPreferences.ageRange} />
-              <Row label="Height" value={partnerPreferences.heightRange} />
-              <Row label="Education" value={partnerPreferences.education} />
-              <Row label="Occupation" value={partnerPreferences.occupation} />
-              <Row label="Caste" value={partnerPreferences.caste} />
-              <Row label="Location" value={partnerPreferences.location} />
+              <Row label="Address" value={contact.address} />
+              <Row label="City / State" value={[contact.city, contact.state].filter(Boolean).join(', ') || null} />
+              <Row label="Phone" value={contact.phone} />
+              <Row label="Email" value={contact.email} />
             </div>
           </Section>
-        )}
-
-        {(contact.phone || contact.email) && (
-          <div className="pt-3 text-xs text-gray-500" style={{ borderTop: `1px solid ${accentColor}22` }}>
-            {contact.address && `${contact.address}, `}{contact.city}, {contact.state} | {contact.phone} | {contact.email}
-          </div>
         )}
       </div>
     </div>

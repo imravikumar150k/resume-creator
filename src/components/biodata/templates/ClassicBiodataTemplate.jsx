@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 const ClassicBiodataTemplate = forwardRef(function ClassicBiodataTemplate({ data, accentColor = '#1f2937' }, ref) {
-  const { personalInfo, religious, education, family, contact, hobbies, partnerPreferences } = data
+  const { personalInfo, religious, education, family, contact, hobbies } = data
 
   const cellStyle = {
     border: `1px solid ${accentColor}`,
@@ -81,10 +81,8 @@ const ClassicBiodataTemplate = forwardRef(function ClassicBiodataTemplate({ data
             <tbody>
               {personalInfo.name && <tr><td style={labelStyle}>Full Name</td><td style={{ ...cellStyle, fontWeight: '600' }}>{personalInfo.name}</td></tr>}
               {personalInfo.dob && <tr><td style={labelStyle}>Date of Birth</td><td style={cellStyle}>{personalInfo.dob}</td></tr>}
-              {personalInfo.birthTime && <tr><td style={labelStyle}>Birth Time</td><td style={cellStyle}>{personalInfo.birthTime}</td></tr>}
               {personalInfo.birthPlace && <tr><td style={labelStyle}>Birth Place</td><td style={cellStyle}>{personalInfo.birthPlace}</td></tr>}
               {personalInfo.height && <tr><td style={labelStyle}>Height</td><td style={cellStyle}>{personalInfo.height}</td></tr>}
-              {personalInfo.weight && <tr><td style={labelStyle}>Weight</td><td style={cellStyle}>{personalInfo.weight}</td></tr>}
               {personalInfo.complexion && <tr><td style={labelStyle}>Complexion</td><td style={cellStyle}>{personalInfo.complexion}</td></tr>}
               {personalInfo.bloodGroup && <tr><td style={labelStyle}>Blood Group</td><td style={cellStyle}>{personalInfo.bloodGroup}</td></tr>}
             </tbody>
@@ -98,11 +96,8 @@ const ClassicBiodataTemplate = forwardRef(function ClassicBiodataTemplate({ data
           <SectionTable
             title="Religious Details"
             rows={[
-              { label: 'Religion', value: religious.religion },
-              { label: 'Caste', value: religious.caste },
-              { label: 'Sub-Caste', value: religious.subCaste },
+              { label: 'Caste / Religion', value: [religious.caste, religious.religion].filter(Boolean).join(', ') },
               { label: 'Gotra', value: religious.gotra },
-              { label: 'Nakshatra', value: religious.nakshatra },
               { label: 'Rashi', value: religious.rashi },
             ]}
           />
@@ -130,8 +125,6 @@ const ClassicBiodataTemplate = forwardRef(function ClassicBiodataTemplate({ data
             { label: 'Mother\'s Name', value: family.motherName && `${family.motherName}${family.motherOccupation ? ` (${family.motherOccupation})` : ''}` },
             { label: 'Brothers', value: family.brothers },
             { label: 'Sisters', value: family.sisters },
-            { label: 'Family Type', value: family.familyType },
-            { label: 'Family Status', value: family.familyStatus },
           ]}
         />
       )}
@@ -149,19 +142,6 @@ const ClassicBiodataTemplate = forwardRef(function ClassicBiodataTemplate({ data
         </div>
       )}
 
-      {(partnerPreferences.ageRange || partnerPreferences.education) && (
-        <SectionTable
-          title="Partner Preferences"
-          rows={[
-            { label: 'Age Range', value: partnerPreferences.ageRange },
-            { label: 'Height Range', value: partnerPreferences.heightRange },
-            { label: 'Education', value: partnerPreferences.education },
-            { label: 'Occupation', value: partnerPreferences.occupation },
-            { label: 'Caste', value: partnerPreferences.caste },
-            { label: 'Location', value: partnerPreferences.location },
-          ]}
-        />
-      )}
 
       {/* Contact */}
       {(contact.phone || contact.email) && (

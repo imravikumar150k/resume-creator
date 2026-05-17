@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 const RoyalBiodataTemplate = forwardRef(function RoyalBiodataTemplate({ data, accentColor = '#d97706' }, ref) {
-  const { personalInfo, religious, education, family, contact, hobbies, partnerPreferences } = data
+  const { personalInfo, religious, education, family, contact, hobbies } = data
 
   return (
     <div ref={ref} className="resume-preview max-w-[8.5in] mx-auto font-serif text-sm leading-relaxed bg-gray-900 text-gray-100 p-8">
@@ -23,7 +23,6 @@ const RoyalBiodataTemplate = forwardRef(function RoyalBiodataTemplate({ data, ac
           <h3 className="text-xs uppercase tracking-widest mb-2" style={{ color: accentColor }}>Personal</h3>
           <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-sm text-gray-300">
             {personalInfo.height && <p>Height: {personalInfo.height}</p>}
-            {personalInfo.weight && <p>Weight: {personalInfo.weight}</p>}
             {personalInfo.complexion && <p>Complexion: {personalInfo.complexion}</p>}
             {personalInfo.bloodGroup && <p>Blood Group: {personalInfo.bloodGroup}</p>}
           </div>
@@ -33,8 +32,7 @@ const RoyalBiodataTemplate = forwardRef(function RoyalBiodataTemplate({ data, ac
           <section>
             <h3 className="text-xs uppercase tracking-widest mb-2" style={{ color: accentColor }}>Religious</h3>
             <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-sm text-gray-300">
-              {religious.religion && <p>Religion: {religious.religion}</p>}
-              {religious.caste && <p>Caste: {religious.caste}</p>}
+              <p>Caste / Religion: {[religious.caste, religious.religion].filter(Boolean).join(', ')}</p>
               {religious.gotra && <p>Gotra: {religious.gotra}</p>}
               {religious.rashi && <p>Rashi: {religious.rashi}</p>}
             </div>
@@ -60,7 +58,6 @@ const RoyalBiodataTemplate = forwardRef(function RoyalBiodataTemplate({ data, ac
               {family.motherName && <p>Mother: {family.motherName}{family.motherOccupation && ` (${family.motherOccupation})`}</p>}
               {family.brothers && <p>Brothers: {family.brothers}</p>}
               {family.sisters && <p>Sisters: {family.sisters}</p>}
-              {family.familyType && <p>{family.familyType} family • {family.familyStatus}</p>}
             </div>
           </section>
         )}
@@ -72,23 +69,18 @@ const RoyalBiodataTemplate = forwardRef(function RoyalBiodataTemplate({ data, ac
           </section>
         )}
 
-        {(partnerPreferences.ageRange || partnerPreferences.education) && (
-          <section>
-            <h3 className="text-xs uppercase tracking-widest mb-2" style={{ color: accentColor }}>Partner Preferences</h3>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-0.5 text-sm text-gray-300">
-              {partnerPreferences.ageRange && <p>Age: {partnerPreferences.ageRange}</p>}
-              {partnerPreferences.heightRange && <p>Height: {partnerPreferences.heightRange}</p>}
-              {partnerPreferences.education && <p>Education: {partnerPreferences.education}</p>}
-              {partnerPreferences.occupation && <p>Occupation: {partnerPreferences.occupation}</p>}
-            </div>
-          </section>
-        )}
       </div>
 
-      {(contact.phone || contact.email) && (
-        <div className="mt-6 pt-3 text-center text-xs text-gray-500" style={{ borderTop: `1px solid ${accentColor}44` }}>
-          {contact.phone}{contact.email && ` • ${contact.email}`}{contact.city && ` • ${contact.city}, ${contact.state}`}
-        </div>
+      {(contact.address || contact.city || contact.phone || contact.email) && (
+        <section>
+          <h3 className="text-xs uppercase tracking-widest mb-2" style={{ color: accentColor }}>Contact</h3>
+          <div className="text-sm text-gray-300 space-y-0.5">
+            {contact.address && <p>Address: {contact.address}</p>}
+            {(contact.city || contact.state) && <p>{[contact.city, contact.state].filter(Boolean).join(', ')}</p>}
+            {contact.phone && <p>Phone: {contact.phone}</p>}
+            {contact.email && <p>Email: {contact.email}</p>}
+          </div>
+        </section>
       )}
     </div>
   )

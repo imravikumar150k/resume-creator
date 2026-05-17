@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 const MinimalistBiodataTemplate = forwardRef(function MinimalistBiodataTemplate({ data, accentColor = '#6b7280' }, ref) {
-  const { personalInfo, religious, education, family, contact, hobbies, partnerPreferences } = data
+  const { personalInfo, religious, education, family, contact, hobbies } = data
 
   function Section({ title, children }) {
     return (
@@ -48,21 +48,16 @@ const MinimalistBiodataTemplate = forwardRef(function MinimalistBiodataTemplate(
       <Section title="Personal">
         <div className="grid grid-cols-2 gap-x-12">
           <Row label="Height" value={personalInfo.height} />
-          <Row label="Weight" value={personalInfo.weight} />
           <Row label="Complexion" value={personalInfo.complexion} />
           <Row label="Blood Group" value={personalInfo.bloodGroup} />
-          <Row label="Birth Time" value={personalInfo.birthTime} />
         </div>
       </Section>
 
       {(religious.religion || religious.caste) && (
         <Section title="Religious">
           <div className="grid grid-cols-2 gap-x-12">
-            <Row label="Religion" value={religious.religion} />
-            <Row label="Caste" value={religious.caste} />
-            <Row label="Sub-Caste" value={religious.subCaste} />
+            <Row label="Caste / Religion" value={[religious.caste, religious.religion].filter(Boolean).join(', ')} />
             <Row label="Gotra" value={religious.gotra} />
-            <Row label="Nakshatra" value={religious.nakshatra} />
             <Row label="Rashi" value={religious.rashi} />
           </div>
         </Section>
@@ -87,8 +82,6 @@ const MinimalistBiodataTemplate = forwardRef(function MinimalistBiodataTemplate(
             <Row label="Mother" value={family.motherName && `${family.motherName}${family.motherOccupation ? ` (${family.motherOccupation})` : ''}`} />
             <Row label="Brothers" value={family.brothers} />
             <Row label="Sisters" value={family.sisters} />
-            <Row label="Family Type" value={family.familyType} />
-            <Row label="Family Status" value={family.familyStatus} />
           </div>
         </Section>
       )}
@@ -99,27 +92,18 @@ const MinimalistBiodataTemplate = forwardRef(function MinimalistBiodataTemplate(
         </Section>
       )}
 
-      {(partnerPreferences.ageRange || partnerPreferences.education) && (
-        <Section title="Partner Preferences">
-          <div className="grid grid-cols-2 gap-x-12">
-            <Row label="Age Range" value={partnerPreferences.ageRange} />
-            <Row label="Height Range" value={partnerPreferences.heightRange} />
-            <Row label="Education" value={partnerPreferences.education} />
-            <Row label="Occupation" value={partnerPreferences.occupation} />
-            <Row label="Caste" value={partnerPreferences.caste} />
-            <Row label="Location" value={partnerPreferences.location} />
-          </div>
-        </Section>
-      )}
 
       {/* Contact */}
-      {(contact.phone || contact.email) && (
-        <div className="pt-6 mt-2 border-t border-gray-100">
-          <p className="text-xs text-gray-400">
-            {contact.address && `${contact.address}, `}{contact.city && `${contact.city}, `}{contact.state}
-            {contact.phone && ` · ${contact.phone}`}{contact.email && ` · ${contact.email}`}
-          </p>
-        </div>
+      {(contact.address || contact.city || contact.phone || contact.email) && (
+        <section className="mb-8">
+          <h3 className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: accentColor }}>Contact</h3>
+          <div className="text-sm text-gray-700 space-y-1">
+            {contact.address && <p>{contact.address}</p>}
+            {(contact.city || contact.state) && <p>{[contact.city, contact.state].filter(Boolean).join(', ')}</p>}
+            {contact.phone && <p>{contact.phone}</p>}
+            {contact.email && <p>{contact.email}</p>}
+          </div>
+        </section>
       )}
     </div>
   )

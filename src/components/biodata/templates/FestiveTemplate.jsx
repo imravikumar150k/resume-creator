@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
 
 const FestiveTemplate = forwardRef(function FestiveTemplate({ data, accentColor = '#dc2626' }, ref) {
-  const { personalInfo, religious, education, family, contact, hobbies, partnerPreferences } = data
+  const { personalInfo, religious, education, family, contact, hobbies } = data
 
   function Section({ title, children }) {
     return (
@@ -55,21 +55,16 @@ const FestiveTemplate = forwardRef(function FestiveTemplate({ data, accentColor 
         <Section title="Personal Details">
           <div className="grid grid-cols-2 gap-x-8">
             <Row label="Height" value={personalInfo.height} />
-            <Row label="Weight" value={personalInfo.weight} />
             <Row label="Complexion" value={personalInfo.complexion} />
             <Row label="Blood Group" value={personalInfo.bloodGroup} />
-            <Row label="Birth Time" value={personalInfo.birthTime} />
           </div>
         </Section>
 
         {(religious.religion || religious.caste) && (
           <Section title="Religious Details">
             <div className="grid grid-cols-2 gap-x-8">
-              <Row label="Religion" value={religious.religion} />
-              <Row label="Caste" value={religious.caste} />
-              <Row label="Sub-Caste" value={religious.subCaste} />
+              <Row label="Caste / Religion" value={[religious.caste, religious.religion].filter(Boolean).join(', ')} />
               <Row label="Gotra" value={religious.gotra} />
-              <Row label="Nakshatra" value={religious.nakshatra} />
               <Row label="Rashi" value={religious.rashi} />
             </div>
           </Section>
@@ -94,8 +89,6 @@ const FestiveTemplate = forwardRef(function FestiveTemplate({ data, accentColor 
               <Row label="Mother" value={family.motherName && `${family.motherName}${family.motherOccupation ? ` (${family.motherOccupation})` : ''}`} />
               <Row label="Brothers" value={family.brothers} />
               <Row label="Sisters" value={family.sisters} />
-              <Row label="Family Type" value={family.familyType} />
-              <Row label="Family Status" value={family.familyStatus} />
             </div>
           </Section>
         )}
@@ -106,25 +99,18 @@ const FestiveTemplate = forwardRef(function FestiveTemplate({ data, accentColor 
           </Section>
         )}
 
-        {(partnerPreferences.ageRange || partnerPreferences.education) && (
-          <Section title="Partner Preferences">
-            <div className="grid grid-cols-2 gap-x-8">
-              <Row label="Age Range" value={partnerPreferences.ageRange} />
-              <Row label="Height Range" value={partnerPreferences.heightRange} />
-              <Row label="Education" value={partnerPreferences.education} />
-              <Row label="Occupation" value={partnerPreferences.occupation} />
-              <Row label="Caste" value={partnerPreferences.caste} />
-              <Row label="Location" value={partnerPreferences.location} />
-            </div>
-          </Section>
-        )}
       </div>
 
       {/* Contact footer */}
-      {(contact.phone || contact.email) && (
-        <div className="text-white text-center py-3 px-6 text-xs" style={{ backgroundColor: accentColor }}>
-          {contact.address && `${contact.address}, `}{contact.city && `${contact.city}, `}{contact.state}
-          {contact.phone && ` | ${contact.phone}`}{contact.email && ` | ${contact.email}`}
+      {(contact.address || contact.city || contact.phone || contact.email) && (
+        <div className="text-white py-3 px-6 text-sm" style={{ backgroundColor: accentColor }}>
+          <h3 className="font-bold text-xs uppercase mb-2 text-white/80">Contact Details</h3>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-0.5">
+            {contact.address && <p>Address: {contact.address}</p>}
+            {(contact.city || contact.state) && <p>City: {[contact.city, contact.state].filter(Boolean).join(', ')}</p>}
+            {contact.phone && <p>Phone: {contact.phone}</p>}
+            {contact.email && <p>Email: {contact.email}</p>}
+          </div>
         </div>
       )}
     </div>

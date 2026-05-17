@@ -5,6 +5,7 @@ function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2)
 }
 
+
 export default function ExperienceForm({ data, onChange }) {
   function addEntry() {
     onChange([...data, { id: generateId(), title: '', company: '', startDate: '', endDate: '', current: false, bullets: [''] }])
@@ -44,8 +45,62 @@ export default function ExperienceForm({ data, onChange }) {
           <Input label="Job Title" id={`title-${entry.id}`} value={entry.title} onChange={(e) => updateEntry(entry.id, 'title', e.target.value)} />
           <Input label="Company" id={`company-${entry.id}`} value={entry.company} onChange={(e) => updateEntry(entry.id, 'company', e.target.value)} />
           <div className="grid grid-cols-2 gap-3">
-            <Input label="Start Date" id={`start-${entry.id}`} value={entry.startDate} onChange={(e) => updateEntry(entry.id, 'startDate', e.target.value)} placeholder="e.g. Jan 2020" />
-            <Input label="End Date" id={`end-${entry.id}`} value={entry.current ? 'Present' : entry.endDate} onChange={(e) => updateEntry(entry.id, 'endDate', e.target.value)} placeholder="e.g. Dec 2022" disabled={entry.current} />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+              <div className="grid grid-cols-2 gap-2">
+                <select
+                  value={entry.startDate?.split(' ')[0] || ''}
+                  onChange={(e) => {
+                    const year = entry.startDate?.split(' ')[1] || ''
+                    updateEntry(entry.id, 'startDate', e.target.value && year ? `${e.target.value} ${year}` : e.target.value)
+                  }}
+                  className="w-full px-2 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="">Month</option>
+                  {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <select
+                  value={entry.startDate?.split(' ')[1] || ''}
+                  onChange={(e) => {
+                    const month = entry.startDate?.split(' ')[0] || ''
+                    updateEntry(entry.id, 'startDate', month && e.target.value ? `${month} ${e.target.value}` : e.target.value)
+                  }}
+                  className="w-full px-2 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                >
+                  <option value="">Year</option>
+                  {Array.from({ length: 30 }, (_, i) => new Date().getFullYear() - i).map(y => <option key={y} value={y}>{y}</option>)}
+                </select>
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">End Date</label>
+              <div className="grid grid-cols-2 gap-2">
+                <select
+                  value={entry.current ? '' : (entry.endDate?.split(' ')[0] || '')}
+                  onChange={(e) => {
+                    const year = entry.endDate?.split(' ')[1] || ''
+                    updateEntry(entry.id, 'endDate', e.target.value && year ? `${e.target.value} ${year}` : e.target.value)
+                  }}
+                  disabled={entry.current}
+                  className="w-full px-2 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
+                >
+                  <option value="">Month</option>
+                  {['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].map(m => <option key={m} value={m}>{m}</option>)}
+                </select>
+                <select
+                  value={entry.current ? '' : (entry.endDate?.split(' ')[1] || '')}
+                  onChange={(e) => {
+                    const month = entry.endDate?.split(' ')[0] || ''
+                    updateEntry(entry.id, 'endDate', month && e.target.value ? `${month} ${e.target.value}` : e.target.value)
+                  }}
+                  disabled={entry.current}
+                  className="w-full px-2 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
+                >
+                  <option value="">Year</option>
+                  {Array.from({ length: 30 }, (_, i) => new Date().getFullYear() - i).map(y => <option key={y} value={y}>{y}</option>)}
+                </select>
+              </div>
+            </div>
           </div>
           <label className="flex items-center gap-2 text-sm text-gray-600">
             <input type="checkbox" checked={entry.current} onChange={(e) => updateEntry(entry.id, 'current', e.target.checked)} />

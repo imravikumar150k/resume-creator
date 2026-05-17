@@ -20,10 +20,6 @@ export default function FamilyForm({ data, onChange }) {
         <Input label="Brothers" value={data.brothers} onChange={(e) => update('brothers', e.target.value)} placeholder="e.g. 1 Elder (Married)" />
         <Input label="Sisters" value={data.sisters} onChange={(e) => update('sisters', e.target.value)} placeholder="e.g. 1 Younger (Unmarried)" />
       </div>
-      <div className="grid grid-cols-2 gap-3">
-        <Input label="Family Type" value={data.familyType} onChange={(e) => update('familyType', e.target.value)} placeholder="Joint / Nuclear" />
-        <Input label="Family Status" value={data.familyStatus} onChange={(e) => update('familyStatus', e.target.value)} placeholder="e.g. Upper Middle Class" />
-      </div>
     </section>
   )
 }

@@ -4,22 +4,42 @@ import { useReactToPrint } from 'react-to-print'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { getBiodataTemplate } from '../components/biodata/templates'
-import { BIODATA_SAMPLE_DATA } from '../components/biodata/templates/sampleData'
 import PersonalDetailsForm from '../components/biodata/form/PersonalDetailsForm'
 import ReligiousForm from '../components/biodata/form/ReligiousForm'
 import EducationCareerForm from '../components/biodata/form/EducationCareerForm'
 import FamilyForm from '../components/biodata/form/FamilyForm'
 import ContactForm from '../components/biodata/form/ContactForm'
 import HobbiesForm from '../components/biodata/form/HobbiesForm'
-import PartnerPreferencesForm from '../components/biodata/form/PartnerPreferencesForm'
 import BiodataPreview from '../components/biodata/preview/BiodataPreview'
 import Button from '../components/ui/Button'
 import SaveIndicator from '../components/ui/SaveIndicator'
 import ColorPicker from '../components/ui/ColorPicker'
 
+const EMPTY_BIODATA = {
+  personalInfo: { name: '', photo: '', dob: '', birthTime: '', birthPlace: '', height: '', weight: '', complexion: '', bloodGroup: '' },
+  religious: { religion: '', caste: '', subCaste: '', gotra: '', nakshatra: '', rashi: '' },
+  education: { degree: '', college: '', occupation: '', company: '', income: '' },
+  family: { fatherName: '', fatherOccupation: '', motherName: '', motherOccupation: '', brothers: '', sisters: '', familyType: '', familyStatus: '' },
+  contact: { address: '', city: '', state: '', phone: '', email: '' },
+  hobbies: '',
+}
+
+function mergeWithDefaults(stored) {
+  const merged = { ...EMPTY_BIODATA }
+  for (const key of Object.keys(EMPTY_BIODATA)) {
+    if (typeof EMPTY_BIODATA[key] === 'object' && EMPTY_BIODATA[key] !== null) {
+      merged[key] = { ...EMPTY_BIODATA[key], ...(stored[key] || {}) }
+    } else {
+      merged[key] = stored[key] !== undefined ? stored[key] : EMPTY_BIODATA[key]
+    }
+  }
+  return merged
+}
+
 export default function BiodataEditorPage() {
   usePageTitle('Create Your Biodata')
-  const [biodataData, setBiodataData, clearData] = useLocalStorage('biodata-data', BIODATA_SAMPLE_DATA)
+  const [rawData, setBiodataData, clearData] = useLocalStorage('biodata-data', EMPTY_BIODATA)
+  const biodataData = mergeWithDefaults(rawData)
   const [templateId] = useLocalStorage('biodata-template', 'traditional')
   const defaultColor = getBiodataTemplate(templateId).accentColor
   const [accentColor, setAccentColor] = useLocalStorage('biodata-accent-color', defaultColor)
@@ -39,7 +59,7 @@ export default function BiodataEditorPage() {
   }
 
   return (
-    <div className="flex-1 flex flex-col">
+    <div className="flex-1 flex flex-col min-h-0">
       <div className="md:hidden bg-yellow-50 border-b border-yellow-200 px-4 py-2 text-sm text-yellow-800">
         For the best editing experience, please use a desktop or tablet device.
       </div>
@@ -61,7 +81,6 @@ export default function BiodataEditorPage() {
           <FamilyForm data={biodataData.family} onChange={(val) => updateField('family', val)} />
           <ContactForm data={biodataData.contact} onChange={(val) => updateField('contact', val)} />
           <HobbiesForm data={biodataData.hobbies} onChange={(val) => updateField('hobbies', val)} />
-          <PartnerPreferencesForm data={biodataData.partnerPreferences} onChange={(val) => updateField('partnerPreferences', val)} />
           <ColorPicker value={accentColor} onChange={setAccentColor} />
         </div>
 
