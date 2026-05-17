@@ -84,7 +84,7 @@ const AcademicTemplate = forwardRef(function AcademicTemplate({ data, accentColo
               <div key={entry.id} className="mb-1.5">
                 <div className="font-semibold text-gray-900">
                   {entry.name}
-                  {entry.link && <span className="text-[10px] ml-2" style={{ color: accentColor }}>{entry.link}</span>}
+                  {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-[10px] ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                 </div>
                 {entry.description && <p className="text-gray-700">{entry.description}</p>}
               </div>

@@ -11,8 +11,8 @@ const CorporateTemplate = forwardRef(function CorporateTemplate({ data, accentCo
           {personalInfo.email && <span>{personalInfo.email}</span>}
           {personalInfo.phone && <span>{personalInfo.phone}</span>}
           {personalInfo.location && <span>{personalInfo.location}</span>}
-          {personalInfo.linkedin && <span>{personalInfo.linkedin}</span>}
-          {personalInfo.website && <span>{personalInfo.website}</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
         </div>
       </header>
 
@@ -76,7 +76,7 @@ const CorporateTemplate = forwardRef(function CorporateTemplate({ data, accentCo
             entry.name && (
               <div key={entry.id} className="mb-2 pl-3 border-l-2 border-gray-300">
                 <span className="font-bold text-gray-900">{entry.name}</span>
-                {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
+                {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                 {entry.description && <p className="text-gray-700 text-xs">{entry.description}</p>}
               </div>
             )

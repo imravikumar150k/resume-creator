@@ -11,8 +11,8 @@ const NewspaperTemplate = forwardRef(function NewspaperTemplate({ data, accentCo
           {personalInfo.email && <span>{personalInfo.email}</span>}
           {personalInfo.phone && <span>• {personalInfo.phone}</span>}
           {personalInfo.location && <span>• {personalInfo.location}</span>}
-          {personalInfo.linkedin && <span>• {personalInfo.linkedin}</span>}
-          {personalInfo.website && <span>• {personalInfo.website}</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">• {personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">• {personalInfo.website}</a>}
         </div>
       </header>
 

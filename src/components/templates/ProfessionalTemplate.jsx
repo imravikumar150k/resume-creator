@@ -15,8 +15,8 @@ const ProfessionalTemplate = forwardRef(function ProfessionalTemplate({ data, ac
         </div>
         <div className="text-right text-xs text-gray-600 space-y-0.5">
           {personalInfo.location && <div>{personalInfo.location}</div>}
-          {personalInfo.linkedin && <div>{personalInfo.linkedin}</div>}
-          {personalInfo.website && <div>{personalInfo.website}</div>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
         </div>
       </header>
 
@@ -80,7 +80,7 @@ const ProfessionalTemplate = forwardRef(function ProfessionalTemplate({ data, ac
             entry.name && (
               <div key={entry.id} className="mb-2">
                 <span className="font-bold text-gray-900">{entry.name}</span>
-                {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
+                {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                 {entry.description && <p className="text-gray-700 text-xs">{entry.description}</p>}
               </div>
             )

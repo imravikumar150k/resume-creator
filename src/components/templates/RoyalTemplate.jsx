@@ -11,8 +11,8 @@ const RoyalTemplate = forwardRef(function RoyalTemplate({ data, accentColor = '#
           {personalInfo.email && <span>{personalInfo.email}</span>}
           {personalInfo.phone && <span>{personalInfo.phone}</span>}
           {personalInfo.location && <span>{personalInfo.location}</span>}
-          {personalInfo.linkedin && <span>{personalInfo.linkedin}</span>}
-          {personalInfo.website && <span>{personalInfo.website}</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
         </div>
       </header>
 
@@ -82,7 +82,7 @@ const RoyalTemplate = forwardRef(function RoyalTemplate({ data, accentColor = '#
             entry.name && (
               <div key={entry.id} className="mb-2">
                 <div className="font-semibold" style={{ color: `${accentColor}cc` }}>{entry.name}
-                  {entry.link && <span className="text-xs ml-2" style={{ color: `${accentColor}99` }}>{entry.link}</span>}
+                  {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: `${accentColor}99` }}>{entry.link}</a>}
                 </div>
                 {entry.description && <p className="text-gray-300 text-xs">{entry.description}</p>}
               </div>

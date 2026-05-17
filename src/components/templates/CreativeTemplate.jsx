@@ -17,8 +17,8 @@ const CreativeTemplate = forwardRef(function CreativeTemplate({ data, accentColo
             {personalInfo.email && <div>{personalInfo.email}</div>}
             {personalInfo.phone && <div>{personalInfo.phone}</div>}
             {personalInfo.location && <div>{personalInfo.location}</div>}
-            {personalInfo.linkedin && <div>{personalInfo.linkedin}</div>}
-            {personalInfo.website && <div>{personalInfo.website}</div>}
+            {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+            {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
           </div>
         </div>
 
@@ -95,7 +95,7 @@ const CreativeTemplate = forwardRef(function CreativeTemplate({ data, accentColo
                 <div key={entry.id} className="mb-2">
                   <div className="font-semibold text-gray-900">
                     {entry.name}
-                    {entry.link && <span className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</span>}
+                    {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                   </div>
                   {entry.description && <p className="text-gray-700">{entry.description}</p>}
                 </div>

@@ -11,8 +11,8 @@ const RetroTemplate = forwardRef(function RetroTemplate({ data }, ref) {
           {personalInfo.email && <span>[{personalInfo.email}]</span>}
           {personalInfo.phone && <span>[{personalInfo.phone}]</span>}
           {personalInfo.location && <span>[{personalInfo.location}]</span>}
-          {personalInfo.linkedin && <span>[{personalInfo.linkedin}]</span>}
-          {personalInfo.website && <span>[{personalInfo.website}]</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">[{personalInfo.linkedin}]</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">[{personalInfo.website}]</a>}
         </div>
       </header>
 
@@ -82,7 +82,7 @@ const RetroTemplate = forwardRef(function RetroTemplate({ data }, ref) {
             entry.name && (
               <div key={entry.id} className="mb-2">
                 <div className="font-bold text-amber-900">{entry.name}
-                  {entry.link && <span className="text-xs text-amber-600 ml-2">[{entry.link}]</span>}
+                  {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs text-amber-600 ml-2">[{entry.link}]</a>}
                 </div>
                 {entry.description && <p className="text-amber-800 text-xs">{entry.description}</p>}
               </div>
