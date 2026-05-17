@@ -6,7 +6,7 @@ const MinimalistBiodataTemplate = forwardRef(function MinimalistBiodataTemplate(
   function Section({ title, children }) {
     return (
       <section className="mb-8">
-        <h3 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3">{title}</h3>
+        <h3 className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: accentColor }}>{title}</h3>
         {children}
       </section>
     )
