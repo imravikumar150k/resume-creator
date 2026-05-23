@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neerajrathore.github.io/resume-creator/sitemap.xml

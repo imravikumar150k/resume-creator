@@ -1,19 +1,20 @@
 import { forwardRef } from 'react'
 
-const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
+const MinimalTemplate = forwardRef(function MinimalTemplate({ data, accentColor = '#9ca3af' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
-    <div ref={ref} className="resume-preview bg-white p-8 max-w-[8.5in] mx-auto font-sans text-sm leading-loose">
+    <div ref={ref} className="resume-preview bg-white p-8 print:p-0 max-w-[8.5in] mx-auto font-sans text-sm leading-loose">
       <header className="mb-6">
         <h1 className="text-3xl font-normal text-gray-800">{personalInfo.name || 'Your Name'}</h1>
         <div className="text-gray-500 text-xs mt-1 flex flex-wrap gap-x-3">
           {personalInfo.email && <span>{personalInfo.email}</span>}
           {personalInfo.phone && <span>{personalInfo.phone}</span>}
           {personalInfo.location && <span>{personalInfo.location}</span>}
-          {personalInfo.linkedin && <span>{personalInfo.linkedin}</span>}
-          {personalInfo.website && <span>{personalInfo.website}</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
         </div>
+        <div className="mt-3 h-px" style={{ backgroundColor: accentColor }}></div>
       </header>
 
       {summary && (
@@ -86,7 +87,7 @@ const MinimalTemplate = forwardRef(function MinimalTemplate({ data }, ref) {
               <div key={entry.id} className="mb-2">
                 <div className="font-medium text-gray-800">
                   {entry.name}
-                  {entry.link && <span className="text-xs text-gray-400 ml-2">{entry.link}</span>}
+                  {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                 </div>
                 {entry.description && <p className="text-gray-600">{entry.description}</p>}
               </div>

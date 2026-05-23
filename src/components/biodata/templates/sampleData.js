@@ -1,0 +1,40 @@
+export const BIODATA_SAMPLE_DATA = {
+  personalInfo: {
+    name: 'Priya Sharma',
+    photo: '',
+    dob: '15 March 1997',
+    birthPlace: 'Jaipur, Rajasthan',
+    height: "5'4\"",
+    complexion: 'Fair',
+    bloodGroup: 'B+',
+  },
+  religious: {
+    religion: 'Hindu',
+    caste: 'Brahmin',
+    gotra: 'Bharadwaj',
+    rashi: 'Vrishabha (Taurus)',
+  },
+  education: {
+    degree: 'MBA - Finance',
+    college: 'IIM Ahmedabad',
+    occupation: 'Financial Analyst',
+    company: 'Deloitte',
+    income: '18 LPA',
+  },
+  family: {
+    fatherName: 'Shri Rajesh Sharma',
+    fatherOccupation: 'Retired Government Officer',
+    motherName: 'Smt. Sunita Sharma',
+    motherOccupation: 'Homemaker',
+    brothers: '1 Elder (Married)',
+    sisters: '1 Younger (Unmarried)',
+  },
+  contact: {
+    address: '42, Vaishali Nagar',
+    city: 'Jaipur',
+    state: 'Rajasthan',
+    phone: '+91 98765 43210',
+    email: 'sharma.family@email.com',
+  },
+  hobbies: 'Classical dance (Kathak), Reading, Cooking, Yoga, Traveling',
+}

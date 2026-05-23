@@ -1,31 +1,31 @@
 import { forwardRef } from 'react'
 
-const ClassicTemplate = forwardRef(function ClassicTemplate({ data }, ref) {
+const ClassicTemplate = forwardRef(function ClassicTemplate({ data, accentColor = '#374151' }, ref) {
   const { personalInfo, summary, experience, education, skills, projects } = data
 
   return (
-    <div ref={ref} className="resume-preview bg-white p-8 max-w-[8.5in] mx-auto font-serif text-sm leading-relaxed">
+    <div ref={ref} className="resume-preview bg-white p-8 print:p-0 max-w-[8.5in] mx-auto font-serif text-sm leading-relaxed">
       <header className="text-center mb-4 border-b border-gray-300 pb-3">
         <h1 className="text-2xl font-bold text-gray-900">{personalInfo.name || 'Your Name'}</h1>
         <div className="text-gray-600 text-xs mt-1 flex flex-wrap justify-center gap-x-3">
           {personalInfo.email && <span>{personalInfo.email}</span>}
           {personalInfo.phone && <span>{personalInfo.phone}</span>}
           {personalInfo.location && <span>{personalInfo.location}</span>}
-          {personalInfo.linkedin && <span>{personalInfo.linkedin}</span>}
-          {personalInfo.website && <span>{personalInfo.website}</span>}
+          {personalInfo.linkedin && <a href={personalInfo.linkedin.startsWith('http') ? personalInfo.linkedin : `https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer">{personalInfo.linkedin}</a>}
+          {personalInfo.website && <a href={personalInfo.website.startsWith('http') ? personalInfo.website : `https://${personalInfo.website}`} target="_blank" rel="noopener noreferrer">{personalInfo.website}</a>}
         </div>
       </header>
 
       {summary && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-gray-700 border-b border-gray-200 mb-1">Summary</h2>
+          <h2 className="text-sm font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Summary</h2>
           <p className="text-gray-800">{summary}</p>
         </section>
       )}
 
       {experience.length > 0 && experience.some((e) => e.title || e.company) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-gray-700 border-b border-gray-200 mb-1">Experience</h2>
+          <h2 className="text-sm font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Experience</h2>
           {experience.map((entry) => (
             (entry.title || entry.company) && (
               <div key={entry.id} className="mb-3">
@@ -51,7 +51,7 @@ const ClassicTemplate = forwardRef(function ClassicTemplate({ data }, ref) {
 
       {education.length > 0 && education.some((e) => e.degree || e.institution) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-gray-700 border-b border-gray-200 mb-1">Education</h2>
+          <h2 className="text-sm font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Education</h2>
           {education.map((entry) => (
             (entry.degree || entry.institution) && (
               <div key={entry.id} className="mb-2">
@@ -70,20 +70,20 @@ const ClassicTemplate = forwardRef(function ClassicTemplate({ data }, ref) {
 
       {skills.length > 0 && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-gray-700 border-b border-gray-200 mb-1">Skills</h2>
+          <h2 className="text-sm font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Skills</h2>
           <p className="text-gray-800">{skills.join(', ')}</p>
         </section>
       )}
 
       {projects.length > 0 && projects.some((p) => p.name) && (
         <section className="mb-4">
-          <h2 className="text-sm font-bold uppercase text-gray-700 border-b border-gray-200 mb-1">Projects</h2>
+          <h2 className="text-sm font-bold uppercase pb-0.5 mb-1" style={{ color: accentColor, borderBottom: `1px solid ${accentColor}` }}>Projects</h2>
           {projects.map((entry) => (
             entry.name && (
               <div key={entry.id} className="mb-2">
                 <div className="font-semibold text-gray-900">
                   {entry.name}
-                  {entry.link && <span className="text-xs text-blue-600 ml-2">{entry.link}</span>}
+                  {entry.link && <a href={entry.link.startsWith('http') ? entry.link : `https://${entry.link}`} target="_blank" rel="noopener noreferrer" className="text-xs ml-2" style={{ color: accentColor }}>{entry.link}</a>}
                 </div>
                 {entry.description && <p className="text-gray-800">{entry.description}</p>}
               </div>
