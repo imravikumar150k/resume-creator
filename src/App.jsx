@@ -21,7 +21,7 @@ function LoadingFallback() {
 
 function App() {
   return (
-    <BrowserRouter basename="/resume-creator">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <div className="h-screen flex flex-col overflow-hidden">
         <Navbar />
         <ErrorBoundary>
