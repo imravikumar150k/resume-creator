@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neerajrathore.github.io/resume-creator/sitemap.xml
+Sitemap: https://buildresumefree.com/sitemap.xml
