@@ -6,7 +6,7 @@
     <script>
       // GitHub Pages SPA redirect hack
       // Converts the path into a query parameter so index.html can restore it
-      var pathSegmentsToKeep = 0; // custom domain serves the app from the root path
+      var pathSegmentsToKeep = 1; // repo deployment keeps /resume-creator prefix
       var l = window.location;
       l.replace(
         l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
