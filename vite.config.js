@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 import seoPages from './vite-plugin-seo-pages.js'
 
 export default defineConfig({
-  base: '/',
+  base: '/resume-creator/',
   plugins: [react(), tailwindcss(), seoPages()],
   test: {
     environment: 'jsdom',
